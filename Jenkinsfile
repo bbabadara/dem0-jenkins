@@ -43,7 +43,7 @@ pipeline {
         stage('Push Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('', 'dockerhub-credentials') {
+                    docker.withRegistry('dockerhub-credentials') {
                         def image = docker.image("${env.DOCKER_HUB_REPO}:${env.IMAGE_TAG}")
                         image.push()
                     }
